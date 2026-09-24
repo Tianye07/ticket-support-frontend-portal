@@ -63,6 +63,20 @@ src/
     └── ticket/components/ #   TicketForm, shared by the creation and details pages
 ```
 
+## Running Tests
+
+The tests use Vitest and Vue Test Utils. The API is mocked, so the backend does not need to be running.
+
+```bash
+npm test             # run once
+```
+
+| File                        | What it checks                                                                                                                                               |
+| --------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `tests/http.helper.spec.ts` | Requests are sent in snake_case and responses come back in camelCase.                                                                                        |
+| `tests/Home.spec.ts`        | The ticket list shows tickets, the empty state, and the error state (with Retry). Filters are sent to the API, and clicking a ticket opens its details page. |
+| `tests/TicketForm.spec.ts`  | Creating a ticket, showing server validation errors under fields, loading and pre-filling a ticket, updating its status, and the "ticket not found" error.   |
+
 ## Tech Stack
 
 Vue 3 (`<script setup>`), TypeScript, Vue Router, Axios, Tailwind CSS v4 (classes use the `tw:` prefix), Vite.
